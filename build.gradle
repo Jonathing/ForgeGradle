@@ -7,7 +7,7 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.39.0'
 }
 
-version = gradleutils.getTagOffsetBranchVersion('FG_5.0')
+version = '5.1.78-pagamos-update'
 logger.lifecycle('Version: ' + version + ' Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 changelog {
@@ -136,6 +136,13 @@ publishing {
         }
     }
     repositories {
-        maven gradleutils.getPublishingForgeMaven()
+        maven {
+            name 'ModdingLegacyMaven'
+            url uri('https://maven.moddinglegacy.com/repository/modding-legacy')
+            credentials {
+                username = project.findProperty('mlm.user') ?: System.getenv('ML_USERNAME')
+                password = project.findProperty('mlm.key') ?: System.getenv('ML_TOKEN')
+            }
+        }
     }
 }
