@@ -84,7 +84,7 @@ public class Utils {
     public static final String ACCESSTRANSFORMER = "net.minecraftforge:accesstransformers:8.0.+:fatjar";
     public static final String SPECIALSOURCE = "net.md-5:SpecialSource:1.11.0:shaded";
     public static final String FART = "net.minecraftforge:ForgeAutoRenamingTool:0.1.+:all";
-    public static final String SRG2SOURCE =  "net.minecraftforge:Srg2Source:8.+:fatjar";
+    public static final String SRG2SOURCE =  "net.minecraftforge:Srg2Source:8.0.9:fatjar";
     public static final String SIDESTRIPPER = "net.minecraftforge:mergetool:1.1.6:fatjar";
     public static final String INSTALLERTOOLS = "net.minecraftforge:installertools:1.3.2:fatjar";
     public static final String JARCOMPATIBILITYCHECKER = "net.minecraftforge:JarCompatibilityChecker:0.1.+:all";
