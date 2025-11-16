@@ -19,4 +19,6 @@ public interface MinecraftMappings extends Serializable {
     ///
     /// @return The version
     String getVersion();
+
+    MinecraftMappings withMinecraftVersion(String version);
 }

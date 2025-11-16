@@ -19,6 +19,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 final class Util extends SharedUtil {
+    public static String forgeToMcVersion(String version) {
+        // Save for a few april-fools versions, Minecraft doesn't use _ in their version names.
+        // So when Forge needs to reference a version of Minecraft that uses - in the name, it replaces
+        // it with _
+        // This could cause issues if we ever support a version with _ in it, but fuck it I don't care right now.
+        int idx = version.indexOf('-');
+        if (idx == -1)
+            throw new IllegalArgumentException("Invalid Forge version: " + version);
+        return version.substring(0, idx).replace('_', '-');
+    }
+
+    public static String mcpToMcVersion(String version) {
+        // MCP names can either be {MCVersion} or {MCVersion}-{Timestamp}, EXA: 1.21.1-20240808.132146
+        // So lets see if the thing following the last - matches a timestamp
+        int idx = version.lastIndexOf('-');
+        if (idx < 0)
+            return version;
+        if (!version.substring(idx + 1).matches("\\d{8}\\.\\d{6}"))
+            return version;
+        return version.substring(0, idx);
+    }
+
     static String checkMappingsParam(ForgeGradleProblems problems, @UnknownNullability Object param, String name) {
         if (param == null)
             throw problems.nullMappingsParam(name);
